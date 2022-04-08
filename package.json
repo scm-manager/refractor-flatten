@@ -1,6 +1,6 @@
 {
   "name": "@scm-manager/refractor-flatten",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A utility to transform Refractor ASTs to flat arrays.",
   "keywords": [
     "refractor",
