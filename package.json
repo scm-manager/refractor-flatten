@@ -48,7 +48,13 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!hastscript)/"
+    ]
   },
   "publishConfig": {
     "access": "public"
@@ -95,13 +101,12 @@
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.23",
-    "@types/refractor": "^3.0.1",
     "husky": "^6.0.0",
     "jest": "^27.0.3",
     "lint-staged": "^11.0.0",
     "outdent": "^0.8.0",
     "prettier": "^2.3.0",
-    "refractor": "^3.3.1",
+    "refractor": "^4.5.0",
     "semantic-release": "^17.4.3",
     "sort-package-json": "^1.50.0",
     "ts-jest": "^27.0.2",
@@ -110,6 +115,6 @@
     "unist-util-inspect": "^6"
   },
   "peerDependencies": {
-    "refractor": "^3.3.1"
+    "refractor": "^4.5.0"
   }
 }

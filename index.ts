@@ -1,4 +1,10 @@
-import type { RefractorNode } from "refractor";
+import type { RefractorElement, Text } from "refractor";
+
+type RefractorNode = RefractorElement | Text;
+
+function isElement(node: RefractorNode): node is RefractorElement {
+  return node.type === "element";
+};
 
 function flatten(
   nodes: RefractorNode[],
@@ -7,11 +13,12 @@ function flatten(
   return nodes.reduce<FlatNodes>(
     (acc, node) =>
       acc.concat(
-        node.type === "element"
+        isElement(node)
           ? flatten(
               node.children,
               new Set([
                 ...(className || []),
+                // @ts-ignore
                 ...(node.properties.className || []),
               ])
             )

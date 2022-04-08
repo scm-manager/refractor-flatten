@@ -1,12 +1,12 @@
-import refractor from "refractor";
+import { refractor } from "refractor";
 import { noColor as inspect } from "unist-util-inspect";
 import flatten from "./index";
 
 test("simple", () => {
   // language=JavaScript
   const javascript = "`${value}`";
-  const tree = refractor.highlight(javascript, "js");
-  expect(stringify(tree)).toMatchInlineSnapshot(`
+  const nodes = refractor.highlight(javascript, "js").children;
+  expect(stringify(nodes)).toMatchInlineSnapshot(`
 "root[1]
 └─0 element<span>[3]
     │ properties: {\\"className\\":[\\"token\\",\\"template-string\\"]}
@@ -26,7 +26,7 @@ test("simple", () => {
         │ properties: {\\"className\\":[\\"token\\",\\"template-punctuation\\",\\"string\\"]}
         └─0 text \\"\`\\""
 `);
-  const flat = flatten(tree);
+  const flat = flatten(nodes);
   expect(stringify(flat)).toMatchInlineSnapshot(`
 "root[5]
 ├─0 element<span>[1]
